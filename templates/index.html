@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Video Converter</h1>
+        <form action="/process" method="post" enctype="multipart/form-data">
+            <p>Please choose:</p>
+            <label>
+                <input type="radio" name="choice" value="1"> Download YouTube Video
+            </label><br>
+            <label>
+                <input type="radio" name="choice" value="2"> Download YouTube Video and Convert Into MP3
+            </label><br>
+            <label>
+                <input type="radio" name="choice" value="3"> Convert a local video to MP3
+            </label><br><br>
+            
+            <div id="form1" style="display: none;">
+                <label>Enter YouTube Link: <input type="text" name="link"></label><br>
+                <label>Choose Quality: 
+                    <select name="quality">
+                        <option value="">Select quality</option>
+                        <option value="360p">360p</option>
+                        <option value="480p">480p</option>
+                        <option value="720p">720p</option>
+                        <option value="1080p">1080p</option>
+                    </select>
+                </label><br>
+            </div>
+            
+            <div id="form2" style="display: none;">
+                <label>Enter YouTube Link: <input type="text" name="linkaudio"></label><br>
+            </div>
+            
+            <div id="form3" style="display: none;">
+                <label>Upload your video: <input type="file" name="file"></label><br>
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <footer>
+        <p>&copy; Noredineba 2024</p>
+    </footer>
+    <script>
+        document.querySelectorAll('input[name="choice"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                document.getElementById('form1').style.display = this.value === '1' ? 'block' : 'none';
+                document.getElementById('form2').style.display = this.value === '2' ? 'block' : 'none';
+                document.getElementById('form3').style.display = this.value === '3' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

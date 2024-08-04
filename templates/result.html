@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ message }}</h1>
+        {% if filepath %}
+            <a href="{{ url_for('download', filepath=filepath) }}" class="button">Download File</a>
+        {% endif %}
+        <a href="/" class="button">Go Back</a>
+    </div>
+    <footer>
+        <p>&copy; Noredineba 2024</p>
+    </footer>
+</body>
+</html>
